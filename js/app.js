@@ -9,11 +9,16 @@ var mouseDown = false;
 //When clicking on control list items
 $(".controls").on("click", "li", function(){
   //Deselect sibling elements
-  $(this).siblings().removeClass("selected");
+  $(this).siblings().removeClass("selected");ßß
   //Select clicked element
   $(this).addClass("selected");
   //cache current color
   color = $(this).css("background-color");
+});
+
+// Clear the canvas w/ clear button 
+$(".clear").on("click", "button", function() {
+  context.clearRect(0, 0, 600, 400);
 });
   
 //When "New Color" is pressed
@@ -55,7 +60,7 @@ $canvas.mousedown(function(e){
     context.moveTo(lastEvent.offsetX, lastEvent.offsetY);
     context.lineTo(e.offsetX, e.offsetY);
     context.strokeStyle = color;
-    context.lineWidth = 5;
+    context.lineWidth = 10;
     context.stroke();
     lastEvent = e;
   }
@@ -67,11 +72,12 @@ $canvas.mousedown(function(e){
 
 
 
-  
+/*option to save the image 
+// save canvas image as data url (png format by default)
+      var dataURL = canvas.toDataURL();
 
+      // set canvasImg image src to dataURL
+      // so it can be saved as an image
+      document.getElementById('canvasImg').src = dataURL;
 
-
-
-
-
-
+*/
